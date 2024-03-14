@@ -75,8 +75,8 @@ docker build -t site .
 ``` bash
 docker run -d -p 1234:80 site
 ```
-
-http://<ip_address>:1234 ####
+## В браузер
+http://<ip_address>:1234
 
 ## Основные инструкции для Dockerfile:
 
