@@ -67,7 +67,7 @@ docker container prune
 ``` bash
 docker image prune -a
 ```
-###12. Посмотреть общий размер в системе и удаление всего
+### 12. Посмотреть общий размер в системе и удаление всего
 
 ``` bash
 docker system df 
