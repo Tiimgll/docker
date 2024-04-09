@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    env_file: ./config/development.env
+
+  backend:
+    build: ./server
+    ports:
+      - 5000:5000
+    env_file: ./config/development.env
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./client
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client/src:/app/src
+
+volumes: 
+  mongo-data:

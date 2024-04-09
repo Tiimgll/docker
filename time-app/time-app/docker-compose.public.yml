@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  frontend:
+    image: tiimgll/test
+    restart: always
+    ports:
+      - '3000:3000'
+  api:
+    image: tiimgll/test2
+    restart: always
+    ports:
+      - '5555:5000'
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PORT: '3306'
+      MYSQL_PASSWORD: P@ssw0rd
+      MYSQL_DB: admin
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+      MYSQL_DATABASE: time_db
+    volumes:
+      - mysql_data_public:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8888:8080'
+
+volumes:
+  mysql_data_public:
